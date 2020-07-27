@@ -40,6 +40,7 @@ $pupilsList = $req->fetchAll(PDO::FETCH_OBJ);
 </head>
 
 <body>
+    <!-- Création du tableau de données. -->
     <div class="container">
         <h1 class="text-center">Ecole La Manu</h1>
         <div class="row">
