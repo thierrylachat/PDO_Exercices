@@ -10,16 +10,16 @@ $dsn = 'mysql:dbname=colyseum;host=localhost;charset=utf8';
 $db = new PDO($dsn, USER, PWD);
 
 // Création de requêtes permettant de lire les infos (tirées de phpMyAdmin).
-$sqlShowTypes = "SELECT `id`, `type` FROM `showtypes`";
+$sqlTwentyFirstClients = "SELECT `id`, `lastName`, `firstName`, `birthDate` FROM `clients` WHERE `id`<21";
 
 // "Query" renvoie le jeu de données associées aux requêtes.
-$req = $db-> query($sqlShowTypes);
+$req = $db-> query($sqlTwentyFirstClients);
 
 // Création du tableau de données liées au jeu de données. 
-$showTypes = $req->fetchAll(PDO::FETCH_OBJ);
+$twentyFirstClients = $req->fetchAll(PDO::FETCH_OBJ);
 
 // Affichage des données. 
-// var_dump($showTypes);
+// var_dump($twentyFirstClients);
 
 ?>
 
@@ -43,21 +43,25 @@ $showTypes = $req->fetchAll(PDO::FETCH_OBJ);
 <body>
     <!-- Création du tableau de données. -->
     <div class="container">
-        <h1 class="text-center m-4 text-success">Types de spectacles</h1>
+        <h1 class="text-center m-4 text-success">Liste des 20 premiers clients</h1>
         <div class="row">
             <div class="col-12">
                 <table class="table table-striped text-center">
-                    <thead>
+                <thead>
                         <tr>
                             <th>#</th>
-                            <th>Type</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Date de naissance</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($showTypes as $showType): ?>
+                        <?php foreach ($twentyFirstClients as $twentyFirstClient): ?>
                         <tr>
-                            <td><?=$showType->id;?></td>
-                            <td><?=$showType->type;?></td>
+                            <td><?=$twentyFirstClient->id;?></td>
+                            <td><?=$twentyFirstClient->lastName;?></td>
+                            <td><?=$twentyFirstClient->firstName;?></td>
+                            <td><?=$twentyFirstClient->birthDate;?></td>
                         </tr>
                         <?php endforeach;?>
                     </tbody>
