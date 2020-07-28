@@ -1,7 +1,7 @@
 <?php
 
 // Création de requêtes permettant de lire les infos (tirées de phpMyAdmin).
-$sqlShowsTitles = "SELECT `title`, `performer`, `date`, `startTime` FROM `shows` ORDER by `title` ASC";
+$sqlShowsTitles = "SELECT `title`, `performer`, DATE_FORMAT(`date`,'%d/%m/%Y') AS date, `startTime` FROM `shows` ORDER by `title` ASC";
 
 // "Query" renvoie le jeu de données associées aux requêtes.
 $req = $db-> query($sqlShowsTitles);
@@ -12,7 +12,7 @@ $showsTitles = $req->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
-<!-- Création du tableau de données. -->
+<!-- Création des paragraphes de données. -->
 <div class="container">
     <h1 class="text-center m-4 text-success">Liste des spectacles</h1>
     <div class="row">

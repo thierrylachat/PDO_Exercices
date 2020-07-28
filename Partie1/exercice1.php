@@ -1,7 +1,7 @@
 <?php
 
 // Création de requêtes permettant de lire les infos (tirées de phpMyAdmin).
-$sqlClientsList = "SELECT `id`, `lastName`, `firstName`, `birthDate` FROM `clients`";
+$sqlClientsList = "SELECT `id`, `lastName`, `firstName`, DATE_FORMAT(`birthDate`,'%d/%m/%Y') AS birthDate FROM `clients`";
 
 // "Query" renvoie le jeu de données associées aux requêtes.
 $req = $db-> query($sqlClientsList);
@@ -30,8 +30,8 @@ $clientsList = $req->fetchAll(PDO::FETCH_OBJ);
                     <?php foreach ($clientsList as $client): ?>
                     <tr>
                         <td><?=$client->id;?></td>
-                        <td><?=$client->lastName;?></td>
-                        <td><?=$client->firstName;?></td>
+                        <td><?=trim(htmlspecialchars($client->lastName));?></td>
+                        <td><?=trim(htmlspecialchars($client->firstName));?></td>
                         <td><?=$client->birthDate;?></td>
                     </tr>
                     <?php endforeach;?>

@@ -45,7 +45,7 @@ $showTypes = $req->fetchAll(PDO::FETCH_OBJ);
                     <?php foreach ($showTypes as $showType): ?>
                     <tr>
                         <td><?=$showType->id;?></td>
-                        <td><?=$showType->type;?></td>
+                        <td><?= trim(htmlspecialchars($showType->type));?></td>
                     </tr>
                     <?php endforeach;?>
                 </tbody>

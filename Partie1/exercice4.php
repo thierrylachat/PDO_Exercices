@@ -1,7 +1,7 @@
 <?php
 
 // Création de requêtes permettant de lire les infos (tirées de phpMyAdmin).
-$sqlCardsClientsList = "SELECT `id`, `lastName`, `firstName`, `birthDate`, `cardNumber` FROM `clients` WHERE `card`=1";
+$sqlCardsClientsList = "SELECT `id`, `lastName`, `firstName`, DATE_FORMAT(`birthDate`,'%d/%m/%Y') AS birthDate, `cardNumber` FROM `clients` WHERE `card`=1";
 
 // "Query" renvoie le jeu de données associées aux requêtes.
 $req = $db-> query($sqlCardsClientsList);
@@ -31,8 +31,8 @@ $cardsClientsList = $req->fetchAll(PDO::FETCH_OBJ);
                     <?php foreach ($cardsClientsList as $cardClient): ?>
                     <tr>
                         <td><?=$cardClient->id;?></td>
-                        <td><?=$cardClient->lastName;?></td>
-                        <td><?=$cardClient->firstName;?></td>
+                        <td><?= trim(htmlspecialchars($cardClient->lastName));?></td>
+                        <td><?= trim(htmlspecialchars($cardClient->firstName));?></td>
                         <td><?=$cardClient->birthDate;?></td>
                         <td><?=$cardClient->cardNumber;?></td>
                     </tr>
