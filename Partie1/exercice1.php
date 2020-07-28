@@ -14,7 +14,7 @@ $clientsList = $req->fetchAll(PDO::FETCH_OBJ);
 
 <!-- Création du tableau de données pour afficher tous les clients. -->
 <div class="container">
-    <h1 class="text-center m-4 text-success">Clients du Colyseum</h1>
+    <h1 class="text-center m-5 text-success">Clients du Colyseum</h1>
     <div class="row">
         <div class="col-12">
             <table class="table table-striped text-center">

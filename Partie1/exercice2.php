@@ -31,7 +31,7 @@ $showTypes = $req->fetchAll(PDO::FETCH_OBJ);
 
 <!-- Création du tableau de données pour afficher tous les types de spectacles possibles. -->
 <div class="container">
-    <h1 class="text-center m-4 text-success">Types de spectacles</h1>
+    <h1 class="text-center m-5 text-success">Types de spectacles</h1>
     <div class="row">
         <div class="col-12">
             <table class="table table-striped text-center">
