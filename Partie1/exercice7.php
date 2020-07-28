@@ -13,7 +13,7 @@ $clients = $req->fetchAll(PDO::FETCH_OBJ);
 
 <!-- Création des paragraphes de données. -->
 <div class="container">
-    <h1 class="text-center m-4 text-success">Liste des clients</h1>
+    <h1 class="text-center m-5 text-success">Liste des clients</h1>
     <div class="row m-auto">
         <?php foreach ($clients as $client): ?>
         <div class="card m-4" style="width: 18rem;">

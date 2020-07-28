@@ -14,7 +14,7 @@ $showsTitles = $req->fetchAll(PDO::FETCH_OBJ);
 
 <!-- Création des paragraphes de données. -->
 <div class="container">
-    <h1 class="text-center m-4 text-success">Liste des spectacles</h1>
+    <h1 class="text-center m-5 text-success">Liste des spectacles</h1>
     <div class="row">
         <div class="text-center col-12">
             <?php foreach ($showsTitles as $showTitle): ?>
