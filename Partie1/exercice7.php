@@ -1,7 +1,7 @@
 <?php
 
 // Création de requêtes permettant de lire les infos (tirées de phpMyAdmin).
-$sqlClients = "SELECT `lastName`, `firstName`, DATE_FORMAT(`birthDate`,'%d/%m/%Y') AS birthDate, `card`, CASE `card` WHEN 0 THEN 'Non' WHEN 1 THEN 'Oui' END AS `card_text`, `cardNumber` FROM `clients`";
+$sqlClients = "SELECT `lastName`, `firstName`, DATE_FORMAT(`birthDate`,'%d/%m/%Y') AS `birthDate`, `card`, CASE `card` WHEN 0 THEN 'Non' WHEN 1 THEN 'Oui' END AS `card_text`, `cardNumber` FROM `clients`";
 
 // "Query" renvoie le jeu de données associées aux requêtes.
 $req = $db-> query($sqlClients);
@@ -11,7 +11,13 @@ $clients = $req->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
-<!-- Création des paragraphes de données. -->
+<!-- Création des cards de données pour afficher tous les clients comme ceci :
+Nom : Nom de famille du client
+Prénom : Prénom du client
+Date de naissance : Date de naissance du client
+Carte de fidélité : Oui (Si le client en possède une) ou Non (s'il n'en possède pas)
+Numéro de carte : Numéro de la carte fidélité du client s'il en possède une. -->
+
 <div class="container">
     <h1 class="text-center m-5 text-success">Liste des clients</h1>
     <div class="row m-auto">

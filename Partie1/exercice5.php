@@ -12,7 +12,7 @@ $MClientsList = $req->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
-<!-- Création des paragraphes de données pour afficher uniquement le nom et le prénom de tous les clients dont le nom commence par la lettre "M" par ordre alphabétique. -->
+<!-- Création des cards de données pour afficher uniquement le nom et le prénom de tous les clients dont le nom commence par la lettre "M" par ordre alphabétique. -->
 <div class="container">
     <h1 class="text-center m-5 text-success">Liste des clients dont le nom commence par "M".</h1>
     <div class="row m-auto">
