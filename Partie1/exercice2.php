@@ -4,9 +4,9 @@
 $sqlShowTypes = "SELECT `id`, `type` FROM `showtypes`";
 
 // "Query" renvoie le jeu de données associées aux requêtes.
-$req = $db-> query($sqlShowTypes);
+$req = $db->query($sqlShowTypes);
 
-// Création du tableau de données liées au jeu de données. 
+// Création du tableau de données liées au jeu de données.
 $showTypes = $req->fetchAll(PDO::FETCH_OBJ);
 
 ?>
@@ -29,7 +29,7 @@ $showTypes = $req->fetchAll(PDO::FETCH_OBJ);
 </head>
 
 
-<!-- Création du tableau de données. -->
+<!-- Création du tableau de données pour afficher tous les types de spectacles possibles. -->
 <div class="container">
     <h1 class="text-center m-4 text-success">Types de spectacles</h1>
     <div class="row">
@@ -45,7 +45,7 @@ $showTypes = $req->fetchAll(PDO::FETCH_OBJ);
                     <?php foreach ($showTypes as $showType): ?>
                     <tr>
                         <td><?=$showType->id;?></td>
-                        <td><?= trim(htmlspecialchars($showType->type));?></td>
+                        <td><?=trim(htmlspecialchars($showType->type));?></td>
                     </tr>
                     <?php endforeach;?>
                 </tbody>
