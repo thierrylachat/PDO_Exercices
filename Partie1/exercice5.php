@@ -12,7 +12,7 @@ $MClientsList = $req->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
-<!-- Création du tableau de données. -->
+<!-- Création des paragraphes de données. -->
 <div class="container">
     <h1 class="text-center m-4 text-success">Liste des clients dont le nom par "M".</h1>
     <div class="row">

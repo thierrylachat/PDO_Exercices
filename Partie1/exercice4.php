@@ -9,7 +9,6 @@ $req = $db-> query($sqlCardsClientsList);
 // Création du tableau de données liées au jeu de données. 
 $cardsClientsList = $req->fetchAll(PDO::FETCH_OBJ);
 
-
 ?>
 
 
