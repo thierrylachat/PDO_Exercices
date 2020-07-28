@@ -9,7 +9,7 @@ $db = getDataBase(DSN, USER, PASSWORD, $option);
 ?>
 
 <!-- 2° méthode.
-$dataBase -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION) -->
+$db-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION) -->
 
 <!doctype html>
 
