@@ -1,6 +1,5 @@
 <?php
 	// chemin absolu
-	// !!! a utiliser pour cloud projet
 	require_once dirname(__FILE__).'/../utils/Database.php';
 	/**
 	 * Créer un utilisateur

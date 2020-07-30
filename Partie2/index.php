@@ -17,7 +17,8 @@
 <body>
     <h1 class="text-center text-success m-5">Gestion des patients</h1>
     <div class="ml-5">
-        <li> <a class="text-dark" href="controllers/add-patient.php">Ajout d'un patient</a> </li>
+        <!-- <li> <a class="text-dark" href="controllers/add-patient.php">Ajout d'un patient</a> </li> -->
+        <li> <a class="text-dark" href="views/ajout-patient.php">Ajout d'un patient</a> </li>
     </div>
 </body>
 
