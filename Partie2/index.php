@@ -1,24 +1,27 @@
-<?php session_start(); ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Hôpital</title>
-</head>
-
+<?php
+$title = 'Hopital E2N';
+include_once dirname(__FILE__) . '/views/includes/header.php'; ?>
 <body>
-    <h1 class="text-center text-success m-5">Gestion des patients</h1>
-    <div class="ml-5">
-        <!-- <li> <a class="text-dark" href="controllers/add-patient.php">Ajout d'un patient</a> </li> -->
-        <li> <a class="text-dark" href="views/ajout-patient.php">Ajout d'un patient</a> </li>
+    <div class="container">
+        <div class="row">
+            <div class="card col-sm-12 bg-light">
+                <div class="card-header font-weight-bold bg-info text-primary text-center"><img width="300" height="150"
+                        src="assets/img/logo.png" alt="maison de santé">
+                    <h1>Maison de santé de Vignacourt</h1>
+                </div>
+                <h2 class="text-center mt-2">gestionnaire de patientèle</h2>
+                <div class="btn mt-4 mb-4 ">
+                    <a class="btn  btn-warning col-sm-6 my-4" href="controllers/ajout-patientCtrl.php"
+                        title="Ajouter un patient">Ajouter un patient</a>
+                    <a class="btn btn-danger col-sm-6 my-4" href="controllers/liste-patientsCtrl.php"
+                        title="Liste des patients">Liste des patients</a>
+                    <a class="btn btn-success col-sm-6 my-4" href="add-appointmentController.php"
+                        title="Ajouter un rendez-vous">Ajouter un rendez-vous</a>
+                    <a class="btn btn-info col-sm-6 my-4" href="liste-appointmentController.php"
+                        title="Liste des rendez-vous">Liste des rendez-vous</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

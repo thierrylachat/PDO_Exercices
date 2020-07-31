@@ -63,7 +63,7 @@ class Patient
 		// Association d'une valeur à un paramètre via bindValue.
 		$patientstmt->bindValue(':firstname',$this->firstname, PDO::PARAM_STR);
 		$patientstmt->bindValue(':lastname',$this->lastname, PDO::PARAM_STR);
-		$patientstmt->bindValue(':birthdate',$this->birthday, PDO::PARAM_STR);
+		$patientstmt->bindValue(':birthdate',$this->birthdate, PDO::PARAM_STR);
 		$patientstmt->bindValue(':phone',$this->phone, PDO::PARAM_STR);
 		$patientstmt->bindValue(':mail',$this->mail, PDO::PARAM_STR);
 		return $patientstmt->execute();

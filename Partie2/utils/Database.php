@@ -8,10 +8,12 @@
         {
             // Création d'une chaîne de connexion Data Source Name.
             $dsn = 'mysql:host='.HOST.';dbname='.DATABASE.';charset=utf8';
+            $option = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
-            try{
-                return new PDO($dsn, USER, PWD, ERR);
+            try {
+                return new PDO($dsn, USER, PASSWORD, $option);
             }
+
 		    // Levée de l'exception.
 		    catch(PDOException $e){
 	      		// Appel du message.
@@ -19,5 +21,6 @@
             }
         }
     }
+    
     var_dump(Database::getInstance());
 ?>
