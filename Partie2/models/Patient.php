@@ -80,7 +80,7 @@ class Patient
 	public function readAll()
 	{
 		// Création d'une requête permettant de lire les infos.
-		$sql = 'SELECT `firstname`, `lastname`, `birthdate` FROM `patients`';
+		$sql = 'SELECT `id`,`firstname`, `lastname`, `birthdate` FROM `patients`';
 
 		// "Query" renvoie le jeu de données associées à la requête.
 		$patientstmt = $this->db->query($sql);
@@ -95,6 +95,5 @@ class Patient
 		}
 		return $patientsList;
 	}
-
 
 }

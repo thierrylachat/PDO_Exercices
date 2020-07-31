@@ -21,6 +21,7 @@
 	                        <td><?=$patient->firstname?></td>
 	                        <td><?=$patient->lastname?></td>
 	                        <td><?=$patient->birthdate?></td>
+	                        <td><a href="profil-patient.php?id=<?=$patient->id;?>">Ajouter un patient</a></td>
 	                    </tr>
 	                    <?php endforeach;?>
                     </tbody>
