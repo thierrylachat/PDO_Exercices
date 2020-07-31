@@ -39,10 +39,12 @@ class Patient
 		$this->$attr = $value;
 	}
 
-	/* Permet de créer un patient dans la table patients 
-	* @return boolean 
-	Commentaires techniques pourquoi pas en bleu ?...
-	*/
+	
+    /**
+     * Permet de créer un patient dans la table patients
+     * @return boolean
+     */
+
 
 	// Création d'une méthode pour insérer une adresse mail valide => Best Practice.
 	// public function setMail($mail)
@@ -51,6 +53,7 @@ class Patient
 	// 		$this->mail = $mail;			
 	// 	}
 	// }
+	
 
 	public function create()
 	{
@@ -68,4 +71,30 @@ class Patient
 		$patientstmt->bindValue(':mail',$this->mail, PDO::PARAM_STR);
 		return $patientstmt->execute();
 	}
+
+	/**
+	 * Retourne la liste des patients enregistrés. 
+	 * @return array
+	 */
+
+	public function readAll()
+	{
+		// Création d'une requête permettant de lire les infos.
+		$sql = 'SELECT `firstname`, `lastname`, `birthdate` FROM `patients`';
+
+		// "Query" renvoie le jeu de données associées à la requête.
+		$patientstmt = $this->db->query($sql);
+
+		// Création du tableau de données liées au jeu de données.
+		$patientsList = [];
+
+		// Vérification que le jeu de données a bien été créé.
+		if($patientstmt instanceof PDOStatement)
+		{
+			$patientsList =  $patientstmt->fetchAll(PDO::FETCH_OBJ);
+		}
+		return $patientsList;
+	}
+
+
 }
