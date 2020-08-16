@@ -1,7 +1,7 @@
 <?php
 
 // Création de requêtes permettant de lire les infos (tirées de phpMyAdmin).
-$sqlShowsTitles = "SELECT `title`, `performer`, DATE_FORMAT(`date`,'%d/%m/%Y') AS `date`, `startTime` FROM `shows` ORDER by `title` ASC";
+$sqlShowsTitles = "SELECT `title`, `performer`, DATE_FORMAT(`date`,'%d/%m/%Y') AS `date`, `startTime` FROM `shows` ORDER BY `title` ASC";
 
 // "Query" renvoie le jeu de données associées aux requêtes.
 $req = $db->query($sqlShowsTitles);

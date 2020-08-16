@@ -20,12 +20,11 @@ $pupilsList = $req->fetchAll(PDO::FETCH_OBJ);
 
 // Affichage des données. 
 // var_dump($pupilsList);
-
 ?>
 
 <!doctype html>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
     <!-- Required meta tags -->
