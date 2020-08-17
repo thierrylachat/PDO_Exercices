@@ -1,5 +1,5 @@
 <?php
-// Création du chemin absolu vers la database.
+// Création du chemin absolu permettant la connexion à la database.
 require_once dirname(__FILE__).'/../utils/Database.php';
 
 // Création de la classe patient.
@@ -61,15 +61,18 @@ class Patient
 		// Création de la requête SQL de création de patients.
 		$sql = 'INSERT INTO `patients` (`firstname`, `lastname`, `birthdate`, `phone`, `mail`) VALUES(:firstname,:lastname,:birthdate,:phone,:mail)';
 
-		// Préparation de la requête.
+		// Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
 		$patientstmt = $this->db->prepare($sql);
 
 		// Association d'une valeur à un paramètre via bindValue.
+		// Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
 		$patientstmt->bindValue(':firstname',$this->firstname, PDO::PARAM_STR);
 		$patientstmt->bindValue(':lastname',$this->lastname, PDO::PARAM_STR);
 		$patientstmt->bindValue(':birthdate',$this->birthdate, PDO::PARAM_STR);
 		$patientstmt->bindValue(':phone',$this->phone, PDO::PARAM_STR);
 		$patientstmt->bindValue(':mail',$this->mail, PDO::PARAM_STR);
+
+		// Exécution de la fonction.
 		return $patientstmt->execute();
 	}
 
@@ -94,6 +97,8 @@ class Patient
 		{
 			$patientsList =  $patientstmt->fetchAll(PDO::FETCH_OBJ);
 		}
+
+		// Retourne le résultat de la fonction readAll().
 		return $patientsList;
 	}
 
@@ -118,7 +123,9 @@ class Patient
         $patientsView = null;
         if ($patientsStatement->execute()){
             $patientsView = $patientsStatement->fetch(PDO::FETCH_OBJ);
-        }
+		}
+		
+		// Retourne le résultat de la fonction readSingle().
         return $patientsView;
     }
 
