@@ -7,7 +7,7 @@ include_once dirname(__FILE__) . '/views/includes/header.php'; ?>
             <div class="card col-sm-12 bg-light">
                 <div class="card-header font-weight-bold bg-info text-primary text-center"><img width="300" height="150"
                         src="assets/img/logo.png" alt="maison de santé">
-                    <h1>CHU Amiens</h1>
+                    <h1>Maison de santé de Vignacourt</h1>
                 </div>
                 <h2 class="text-center mt-2">gestionnaire de patientèle</h2>
                 <div class="btn mt-4 mb-4 ">
@@ -26,6 +26,3 @@ include_once dirname(__FILE__) . '/views/includes/header.php'; ?>
 </body>
 
 </html>
-
-<?php
-include_once dirname(__FILE__) . '/views/includes/footer.php'; ?>

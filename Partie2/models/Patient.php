@@ -2,7 +2,7 @@
 // Création du chemin absolu vers la database.
 require_once dirname(__FILE__).'/../utils/Database.php';
 
-// Créer de la classe patient.
+// Création de la classe patient.
 
 class Patient
 {
@@ -47,6 +47,7 @@ class Patient
 
 
 	// Création d'une méthode pour insérer une adresse mail valide => Best Practice.
+	// Normalement dans la partie Controllers pour moi car réalise un contrôle...
 	// public function setMail($mail)
 	// {
 	// 	if(filter_var($mail, FILTER_VALIDATE_EMAIL)){
@@ -95,5 +96,17 @@ class Patient
 		}
 		return $patientsList;
 	}
+	public function readSingle()
+    {
+        // :nomDeVariable pour les données en attentes
+        $sql_viewPatients = 'SELECT `id`, `lastname`, `firstname`,DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS birthdate,`phone`,`mail` FROM `patients` WHERE `id` = :id';
+        $patientsStatement = $this->db->prepare($sql_viewPatients);
+        $patientsStatement->bindValue(':id', $this->id,PDO::PARAM_INT);
+        $patientsView = null;
+        if ($patientsStatement->execute()){
+            $patientsView = $patientsStatement->fetch(PDO::FETCH_OBJ);
+        }
+        return $patientsView;
+    }
 
 }

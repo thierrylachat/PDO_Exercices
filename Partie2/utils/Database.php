@@ -1,4 +1,5 @@
 <?php
+    // Création du chemin absolu vers les constantes de connexion.
     require_once dirname(__FILE__) . '/../config/params.php';
 
     class Database
@@ -22,5 +23,5 @@
         }
     }
     
-    var_dump(Database::getInstance());
+    // var_dump(Database::getInstance());
 ?>
