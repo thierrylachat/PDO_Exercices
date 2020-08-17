@@ -14,17 +14,18 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Prénom</th>
-                        <th>Nom </th>
-                        <th>Date de naissance</th>
+                        <th class="text-uppercase">Prénom</th>
+                        <th class="text-uppercase">Nom </th>
+                        <th class="text-uppercase">Date de naissance</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($patientsList as $number => $patient): ?>
                     <tr>
                         <td><?= $number + 1 ?></td>
+                        <!-- Affichage du profil du patient ciblé par son ID. -->
                         <td><a href="../controllers/profil-patientCtrl.php?idPatient=<?= $patient->id ?>"><?= $patient->firstname ?></a></td>
-                        <td><?= $patient->lastname ?></td>
+                        <td><a href="../controllers/profil-patientCtrl.php?idPatient=<?= $patient->id ?>"><?= $patient->lastname ?></a></td>
                         <td><?= $patient->birthdate ?></td>
                     </tr>
                     <?php endforeach; ?>
