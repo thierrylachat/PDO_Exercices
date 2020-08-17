@@ -12,7 +12,7 @@ include_once dirname(__FILE__) . '/views/includes/header.php'; ?>
                 </div>
                 <h2 class="text-center mt-2 font-italic">Gestionnaire de patientèle</h2>
                 <div class="btn mt-2 mb-4">
-                <!-- Les actions du portail sont jouées par les méthodes inclues dans les controllers. -->
+                <!-- Les actions du portail sont jouées par les méthodes appelées dans les models par les controllers. -->
                     <a class="btn btn-danger col-sm-6 my-4 font-weight-bold text-uppercase" href="controllers/ajout-patientCtrl.php"
                         title="Ajouter un patient">Ajouter un patient</a>
                     <a class="btn btn-danger col-sm-6 my-4 font-weight-bold text-uppercase" href="controllers/liste-patientsCtrl.php"
