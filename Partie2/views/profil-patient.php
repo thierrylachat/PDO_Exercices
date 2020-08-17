@@ -1,11 +1,16 @@
 <?php include_once dirname(__FILE__) . '/includes/header.php'; ?>
+
 <div class="container mt-5">
     <h1>Profil </h1>
+
+    <!-- Création d'une condition si le patient recherché n'existe pas. -->
     <?php if(!$patientInfo): ?>
         <div class="card">
             <p class="card-title">Le patient recherché n'existe pas !</p>
             <a href="../controllers/liste-patientsCtrl.php">Retour à la liste des patients</a>
         </div>
+    
+    <!-- Affichage des données du profil du patient. -->
     <?php else : ?>
         <div class="card">
             <div class="card-body">
@@ -18,4 +23,5 @@
         </div>
     <?php endif; ?>
 </div>
+
 <?php include_once dirname(__FILE__) . '/includes/footer.php'; ?>
