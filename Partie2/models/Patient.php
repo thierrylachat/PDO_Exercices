@@ -110,7 +110,7 @@ class Patient
 	public function readSingle()
     {
         // :nomDeVariable pour les données en attente.
-		// Création d'une requête permettant de lire les infos.
+		// Création d'une requête permettant de lire les infos d'un patient avec l'ID (unique).
 		$sql_viewPatients = 'SELECT `id`, `lastname`, `firstname`, DATE_FORMAT(`birthdate`, "%d/%m/%Y") AS `birthdate`,`phone`,`mail` FROM `patients` WHERE `id` = :id';
 		
 		// Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
