@@ -1,10 +1,11 @@
 <?php include_once dirname(__FILE__) . '/includes/header.php'; ?>
+
 <div class="container mt-5">
     <h1 class="h1 text-center">Liste des patients</h1>
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="text-right mb-3">
-                <a class="btn btn-outline-info text-right" href="../controllers/ajout-patientCtrl.php">Ajouter un
+                <a class="btn btn-outline-info text-right font-weight-bold" href="../controllers/ajout-patientCtrl.php">Ajouter un
                     patient</a>
             </div>
             <?php 
@@ -37,4 +38,5 @@
         </div>
     </div>
 </div>
+
 <?php include_once dirname(__FILE__) . '/includes/footer.php'; ?>
