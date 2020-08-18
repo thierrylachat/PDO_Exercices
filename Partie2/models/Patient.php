@@ -76,6 +76,53 @@ class Patient
 		return $patientstmt->execute();
 	}
 
+
+	/** 
+	 * Permet de supprimer un patient.
+	 */
+
+	public function delete()
+	{
+		// Création de la requête SQL de suppression de patient.
+		$sql = 'DELETE FROM `patients` WHERE `id` = :id';
+
+		// Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
+		$patientstmt = $this->db->prepare($sql);
+
+		// Association d'une valeur à un paramètre via bindValue.
+		// Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
+		$patientstmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+		// Exécution de la fonction.
+		return $patientstmt->execute();
+	}
+
+	/** 
+	 * Permet de mettre à jour les données d'un profil patient.
+	 */
+
+	public function update(){
+
+		// Création de la requête SQL de mise à jour des données du patient.
+		$sql = 'UPDATE `patients` SET `lastname`= :lastname, `firstname`= :firstname, `birthdate`= :birthdate , `phone`= :phone, `mail`= :mail WHERE `id` = :id';
+
+		// Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
+		$patientstmt = $this->db->prepare($sql);
+
+		// Association d'une valeur à un paramètre via bindValue.
+		// Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
+		$patientstmt->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+		$patientstmt->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+        $patientstmt->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
+        $patientstmt->bindValue(':phone', $this->phone, PDO::PARAM_STR);
+        $patientstmt->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+        $patientstmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+		// Exécution de la fonction.
+		return $patientstmt->execute();
+
+	}
+
 	/**
 	 * Retourne la liste des patients enregistrés. 
 	 * @return array

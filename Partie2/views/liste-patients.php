@@ -17,6 +17,7 @@
                         <th class="text-uppercase">Prénom</th>
                         <th class="text-uppercase">Nom </th>
                         <th class="text-uppercase">Date de naissance</th>
+                        <th class="text-center">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,7 @@
                         <td><a href="../controllers/profil-patientCtrl.php?idPatient=<?= $patient->id ?>"><?= $patient->firstname ?></a></td>
                         <td><a href="../controllers/profil-patientCtrl.php?idPatient=<?= $patient->id ?>"><?= $patient->lastname ?></a></td>
                         <td><?= $patient->birthdate ?></td>
+                        <td class="text-center"><a href="../controllers/suppression-patientCtrl.php?idPatient=<?= $patient->id ?>">X</a></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
