@@ -1,0 +1,45 @@
+body
+{
+    background-image: url(https://www.enovacom.fr/wp-content/uploads/using-modern-technology-to-do-some-medical-research.jpg);
+    background-size: cover;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    color: white;
+}
+h1{
+    margin-top: 20%;
+    background-color: rgba(74, 122, 233, 0.6);
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 3em;
+    color: cornsilk;
+}
+nav
+{
+    background-color: rgba(222, 229, 246, 0.8);
+    color: #328BCE;
+    font-size: 1em !important;
+}
+.form
+{
+    background-color: rgba(74, 122, 233, 0.6);
+    color: cornsilk;
+    padding: 3px;
+    margin-top: 10%;
+    margin-left: 25%;
+}
+.form legend
+{
+    text-align: center;
+    font-size: 1.75em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+img
+{
+    width: 100px;
+}
+
+#patients{
+    overflow-y: scroll;
+}

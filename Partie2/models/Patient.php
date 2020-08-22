@@ -119,6 +119,7 @@ class Patient
         $patientstmt->bindValue(':id', $this->id, PDO::PARAM_INT);
 
 		// Exécution de la fonction.
+		// La méthode rowCount permet de retourner le nombre de lignes affectées avec un insert, delete et update.
 		return $patientstmt->execute();
 
 	}
