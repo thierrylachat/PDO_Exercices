@@ -39,7 +39,7 @@
         {
             $this->$attr = $value;
         }
-        
+
         // Création d'une méthode pour insérer une adresse mail valide => Best Practice.
         // public function setMail($mail)
         // {
@@ -87,18 +87,29 @@
 			}
             return $patientsView;
         }
+
         /**
-         * retour liste des patients enregistré
+         * Retourne la liste des patients enregistrés.
          * @return array
          */
+
 		public function readAll()
 		{
-            $listPatients_sql = 'SELECT `id`,`lastname`, `firstname`,DATE_FORMAT(`birthdate`,"%d/%m/%Y") AS birthdate_format FROM `patients`';
+            // Création d'une requête permettant de lire les infos.
+            $listPatients_sql = 'SELECT `id`,`lastname`, `firstname`, DATE_FORMAT(`birthdate`,"%d/%m/%Y") AS birthdate_format FROM `patients`';
+            
+            // "Query" renvoie le jeu de données associées à la requête.
             $patientsStatement = $this->db->query($listPatients_sql);
+
+            // Création du tableau de données liées au jeu de données.
             $listPatients = [];
+
+            // Vérification que le jeu de données a bien été créé.
             if ($patientsStatement instanceof PDOstatement ) {
                 $listPatients = $patientsStatement->fetchAll(PDO::FETCH_OBJ);
             }
+
+            // Retourne le résultat de la fonction readAll().
             return $listPatients;
 		}
 
