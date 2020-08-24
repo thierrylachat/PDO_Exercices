@@ -9,6 +9,7 @@
     $firstname = $lastname = $birthdate = $phone = $mail='';
     $errors = [];
 
+    // Soumission du formulaire.
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $isSubmitted = true;
     
