@@ -1,5 +1,10 @@
 <?php
+
+    // Création du chemin absolu permettant la connexion à la database.
     require_once dirname(__FILE__).'/../utils/Databases.php';
+
+    // Création de la classe Appointment.
+
     class Appointment
     {
         private $id;
@@ -7,8 +12,10 @@
         private $idPatients;
         private $db;
 
-        public function __construct($_id=0,$_dateHour='',$_idPatients=0)
+        // Création d'un constructeur avec des valeurs par défaut pour chaque attribut.
+        public function __construct($_id= 0, $_dateHour= '', $_idPatients= 0)
         {
+            // Hydratation des différentes propriétés.
             $this->db = Databases::getInstance();
             $this->id = $_id;
             $this->dateHour = $_dateHour;
@@ -111,4 +118,5 @@
             $patientsDelete->bindValue(':id', $idPatient,PDO::PARAM_INT);
             return $patientsDelete->execute();
         }
+
     }

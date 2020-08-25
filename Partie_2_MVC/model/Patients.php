@@ -142,7 +142,7 @@
 
         /**
 	    * Retourne la liste des informations des profils des patients.
-	    // * @return array
+	    * @return boolean
         */
 
 		public function update()
@@ -165,9 +165,14 @@
             return $patientsStatement->execute();
 		}
 
+        /**
+	    * Supprime un patient.
+	    * @return boolean
+        */
 
 		public function delete()
 		{
+            // Création d'une requête SQL de suppression du patient avec l'ID (unique).
             $sql = 'DELETE FROM `patients` WHERE `id`=:id';
             $patientsDelete = $this->db->prepare($sql);
             $patientsDelete->bindValue(':id', $this->id,PDO::PARAM_INT);
