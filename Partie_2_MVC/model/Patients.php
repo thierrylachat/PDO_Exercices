@@ -16,7 +16,7 @@
         private $db;
 
         // Création d'un constructeur avec des valeurs par défaut pour chaque attribut.
-        public function __construct($_id = 0, $_lastname = '', $_firstname = '', $_birthdate = '', $_phone = '', $_mail = '')
+        public function __construct($_id = 0, $_firstname = '', $_lastname = '', $_birthdate = '', $_phone = '', $_mail = '')
         {
             // Hydratation des différentes propriétés.
             $this->db = Databases::getInstance();
