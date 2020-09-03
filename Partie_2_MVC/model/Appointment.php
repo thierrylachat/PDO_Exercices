@@ -33,14 +33,8 @@
         {
             $this->$attr = $value;
         }
-        // Création d'une méthode pour insérer une adresse mail valide => Best Practice.
-        // public function setMail($mail)
-        // {
-        //     if(filter_var($mail, FILTER_VALIDATE_EMAIL))
-        //     {
-        //         $this->mail = $mail;            
-        //     }
-        // }
+
+        
 
         public function create()
 		{

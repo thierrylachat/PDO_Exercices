@@ -34,4 +34,4 @@ define('DB_NAME', 'hospitalE2N');
  * =========================================================== *
  * mysql error                                                 *
  ==============================================================*/
-define('ERR', '[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]');
+define('ERR', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
