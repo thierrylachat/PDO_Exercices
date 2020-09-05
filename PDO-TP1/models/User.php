@@ -55,7 +55,7 @@
 
 		public function readAll()
 		{
-			/* Création d'une requête permettant de lire les infos d'un utilisateur
+			/* Création d'une requête permettant de lire les infos d'un utilisateur.
 			   Le TIMESTAMPDIFF permet ici de récupérer l'âge à partir de la date de naissance. */
 			$select_SQL = 'SELECT users.users_id, users.lastname, users.firstname, TIMESTAMPDIFF(year, users.birthdate, CURRENT_DATE) AS age, users.address, users.zipcode, users.phone, services.name AS service_name FROM users JOIN services ON users.services_id = services.services_id ORDER BY users.lastname ASC';
 			
