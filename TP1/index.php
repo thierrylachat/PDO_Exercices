@@ -15,10 +15,8 @@ Remplir la table Service avec ces informations :
 Nom du service
 Description
 Maintenance	Les spécialistes du hardware
-Web Developer
-Pour eux, tout est code
-Web Designer
-Y'a que le CSS dans la vie
+Web Developer Pour eux, tout est code
+Web Designer Y'a que le CSS dans la vie
 Référenceur	Regarde les Serps Google du matin au soir et du soir au matin
 
 
