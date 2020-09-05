@@ -17,7 +17,7 @@
         private $zipcode;
         private $phoneNumber;
         private $service; 
-        // Penser aux clés étrangères !
+        // Penser à la database et aux clés étrangères !
 
 
         // Création d'un constructeur avec des valeurs par défaut pour chaque attribut.
