@@ -19,7 +19,7 @@
 			<h1>Enregistrer un employé</h1>
 		</div>
 
-		<!-- Création d'une alerte de succès de création d'un nouvel utilisateur. -->
+		<!-- Création d'une alerte en cas de succès de création d'un nouvel utilisateur. -->
 		<?php if ($createSuccess) : ?>
 		<div class="alert alert-success" role="alert">
 			Votre employé est enregistré avec succès !
@@ -150,7 +150,7 @@
 		</div>
 
 	</div>
-	
+
 </body>
 
 </html>

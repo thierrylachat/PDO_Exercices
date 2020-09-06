@@ -1,0 +1,9 @@
+Exercices PDO :
+1/ Création du dossier avec l'arborescence MVC.
+2/ Création de la page index.php.
+3/ Création du VirtualHost.
+4/ Création du script de la BDD.
+5/ Création des tables avec création de clé étrangère.
+6/ Création de connexion à la BDD avec Database.php et le dossier de configuration.
+7/ Création des modèles avec les méthodes (Create, Read, Delete, "Select").
+8/ Créations des vues et des controleurs.
