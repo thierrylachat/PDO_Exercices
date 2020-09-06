@@ -1,54 +1,62 @@
 $(document).ready(function(){
+
+	// Formatage des données du prénom avec la première lettre en majuscule et le reste en minuscule.
 	$("input[name='firstname']").keyup(function(){
 		string = $(this).val();
 		string = string.substr(0, 1).toUpperCase() + string.substr(1, string.length).toLowerCase();
 		$(this).val(string);
 	})
 
+	// Formatage des données du nom avec la première lettre en majuscule et le reste en minuscule.
 	$("input[name='lastname']").keyup(function(){
 		string = $(this).val();
 		string = string.substr(0, 1).toUpperCase() + string.substr(1, string.length).toLowerCase();
 		$(this).val(string);
 	})
 
+	// Fonctionnement du bouton delete des cards des utilisateurs.
 	$("body").on('click', '.delete', function(e){
-		e.preventDefault(); // empêche le rechargement de la page
-		var id = $(this).attr('data-delete'); // affecte l'id du user contenu dans le data-delete du button
-		$(this).attr('type', 'submit'); // change le type du button en submit
-		$(this).removeClass('delete'); // retire la class delete pour ne pas repasser dans le traitement actuel
-		$("button[data-id='"+id+"']").removeClass('d-none'); // retire le d-none du boutton annuler correspondant à l'id du user récupéré
+		e.preventDefault(); // Empêche le rechargement de la page.
+		var id = $(this).attr('data-delete'); // Affecte l'id du user contenu dans le data-delete du button.
+		$(this).attr('type', 'submit'); // Change le type du button en submit.
+		$(this).removeClass('delete'); // Retire la class delete pour ne pas repasser dans le traitement actuel.
+		$("button[data-id='"+id+"']").removeClass('d-none'); // Retire le d-none (display : none) du bouton annuler correspondant à l'id du user récupéré.
 	})
 
+	// Fonctionnement du bouton annuler des cards des utilisateurs.
 	$("body").on('click', '.stop', function(){
-		var id = $(this).attr('data-id'); // affecte l'id du user contenu dans le data-id du button
-		$(this).addClass('d-none'); // ajoute la classe d-none
-		$("button[data-delete='"+id+"']").attr('type', 'button').addClass('delete'); // change le type submit en type button car on veut annuler l'opération delete
+		var id = $(this).attr('data-id'); // Affecte l'id du user contenu dans le data-id du button.
+		$(this).addClass('d-none'); // Ajoute la classe d-none.
+		$("button[data-delete='"+id+"']").attr('type', 'button').addClass('delete'); // Change le type submit en type button car on veut annuler l'opération delete.
 	})
 })
 
-	// ON RECUPERE DANS "element" NOTRE BALISE HTML "filter"
+
+	// Traitement AJAX pour le filtre des services.
+
+	// ON RECUPERE DANS "element" NOTRE BALISE HTML "filter".
 	let element = document.getElementById('filter');
-	// ON ECOUTE L'EVENEMENT "CHANGE" SUR CET ELEMENT
+	// ON ECOUTE L'EVENEMENT "CHANGE" SUR CET ELEMENT.
     element.addEventListener('change',function(){
-		// ON ATTRIBUE LA VALEUR DE NOTRE CHAMPS "filter" DANS LA VARIABLE "service"
+		// ON ATTRIBUE LA VALEUR DE NOTRE CHAMP "filter" DANS LA VARIABLE "service".
 		var service = element.value;
-		// ON EFFECTUE UNE REQUETE AJAX SUR NOTRE CONTROLLER
+		// ON EFFECTUE UNE REQUETE AJAX SUR NOTRE CONTROLLER.
         var request = fetch('../controllers/index_controller.php?filter='+service, {
             headers: {
-                'Accept': 'application/json' // ON ATTEND EN RETOUR UN JSON (UN TABLEAU PHP TRANSFORME EN CHAINE GRACE A JSON_ENCODE)
+                'Accept': 'application/json' // ON ATTEND EN RETOUR UN JSON (UN TABLEAU PHP TRANSFORME EN CHAINE GRACE A JSON_ENCODE).
             }
         })
-        .then(function (response) { // SI TOUT VA BIEN ON RETOURNE LA PROMESSE TRANSFORMEE 
+        .then(function (response) { // SI TOUT VA BIEN ON RETOURNE LA PROMESSE TRANSFORMEE.
             return response.json();
 		})
-		.then(function (users_array) { // users_array CONTIENT UN TABLEAU JAVASCRIPT D'OBJETS (nos résultats) 
-			// ON RECUPERE DANS "resultUsersList" NOTRE BALISE HTML "UsersList"
+		.then(function (users_array) { // users_array CONTIENT UN TABLEAU JAVASCRIPT D'OBJETS (nos résultats). 
+			// ON RECUPERE DANS "resultUsersList" NOTRE BALISE HTML "UsersList".
 			let resultUsersList = document.getElementById('UsersList');
 			let html = "";
-				// SI users_array EST VITE ON ALERTE
+				// SI users_array EST VIDE ON ALERTE
 				if (users_array.length === 0){
 					html = `<div class="col-12">Aucun utilisateur n'est enregistré dans la base</div>`
-				} else { // SINON, ON BOUCLE SUR LE TABLEAU ET ON GENERE UN CODE HTML CONTENANT TOUS LES RESULTATS 
+				} else { // SINON, ON BOUCLE SUR LE TABLEAU ET ON GENERE UN CODE HTML CONTENANT TOUS LES RESULTATS. 
 					users_array.forEach (user => 
 						{
 						html += `<div class="col-lg-4 col-md-6">
@@ -71,7 +79,7 @@ $(document).ready(function(){
 						</div>`
 						})
 				}
-				// ON ENVOIE LE HTML GENERE DANS resultUsersList
+				// ON ENVOIE LE HTML GENERE DANS resultUsersList.
 				resultUsersList.innerHTML = html;
 
 
