@@ -30,7 +30,7 @@
             $errors['lastname'] = 'Votre nom contient des caractères non autorisés !';
         }
          
-        // Vérification du champ date d'anniversaire.
+        // Vérification du champ date de naissance.
         $birthdate = trim(htmlspecialchars($_POST['birthdate']));
         if (empty($birthdate)) {
             $errors['birthdate'] = 'Veuillez renseigner votre date de naissance';
