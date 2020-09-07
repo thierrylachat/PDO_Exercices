@@ -13,6 +13,7 @@
     <?php include (dirname(__FILE__).'/../includes/menu.html')?>
     <h1 class="text-center">Liste de nos clients</h1>
     <div class="row justify-content-center mt-5 mb-5">
+        <!-- Création d'un boucle pour afficher chaque client sous la forme d'une card. -->
         <?php if(count($client_list)> 0) {?>
             <?php foreach ($client_list as $clients) { ?>
             <div class="card bg-dark" style="width: 18rem;">
