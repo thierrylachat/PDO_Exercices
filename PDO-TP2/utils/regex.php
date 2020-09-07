@@ -1,5 +1,7 @@
 <?php
 
+// Best Practice : mettre les REGEX dans un fichier à part afin d'éviter de dupliquer ce code dans les controlleurs.
+
 // Création des REGEX.
 $regexName = "/^[A-Za-zéÉ][A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+((-| )[A-Za-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+)?$/";
 $regexDate = "/^((?:19|20)[0-9]{2})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/";
