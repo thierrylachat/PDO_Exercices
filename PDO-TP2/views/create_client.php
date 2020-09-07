@@ -15,14 +15,19 @@
 
 <div class="row justify-content-center" style="padding:10%;">
     <form action="" method="POST" class="col-md-6">
+    
+    <!-- Création d'une alerte en cas de succès de création d'un nouvel utilisateur. -->
     <?php if(isset($createSuccess)) { ?>
         <div class="alert alert-success text-center">Votre client a bien été enregistré</div>
     <?php } ?>
+    <!-- Création d'une boucle pour l'affichage des erreurs. -->
     <?php if (count($errors) > 0) { ?>
         <?php foreach ($errors as $error) { ?>
             <div class="alert alert-danger"><?= $error; ?></div>
         <?php } ?>
     <?php } ?>
+
+    <!-- Les "isset" au niveau des values permettent de conserver les informations renseignées dans le formulaire. -->
     <div class="form-group">
         <label for="lastname">Nom <i class="mdi mdi-abugida-devanagari:"></i></label>
         <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Dupond" value="<?= isset($_POST['lastname']) ? $_POST['lastname'] : ''; ?>">
@@ -49,6 +54,7 @@
     </div>
     <div class="form-group">
         <label for="statut_id">Statut Marital</label>
+        <!-- Affichage du menu déroulant pour le statut marital. -->
         <select class="form-control" name="statut_id" id="statut_id">
             <option value="">Selectionnez votre statut</option>
             <?php foreach($statut_list as $statut) {  ?>
