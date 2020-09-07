@@ -16,12 +16,14 @@
     <div class="row justify-content-center mt-5 bg-dark text-white">
     <img class="img-fluid col-md-3 mb-3" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
         <div class=" col-md-6 text-center">
+            <!-- Affichage des données du profil d'un utilisateur. -->
             <p>Date de Naissance : <?= $clientProfile->client_birthdate?></p>
             <p>Adresse : <?= $clientProfile->client_address.' '.$clientProfile->client_zipcode?></p>
             <p>Téléphone : <?= $clientProfile->client_phone?></p>
             <p>Statut Marital : <?= $clientProfile->statut?></p>
             <h2>Liste des credits :</h2>
             <div class="row">
+                <!-- Création d'un tableau permettant d'afficher les crédits d'un client. -->
                 <table class="table table-bordered table-dark">
                     <thead>
                         <tr>
@@ -38,7 +40,7 @@
                             </tr>
                         <?php } ?>
                     <?php }  else {  ?>
-                        <p>Aucun credit ne correspont a ce client</p>
+                        <p>Aucun credit ne correspond à ce client</p>
                     <?php } ?>
                     </tbody>
                 </table>
