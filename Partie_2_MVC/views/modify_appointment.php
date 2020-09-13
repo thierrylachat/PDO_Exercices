@@ -22,6 +22,7 @@
         <a href="liste_patients_ctrl.php" class="nav-link ">Liste Patients</a>
         <a href="create_appointment_ctrl.php" class="nav-link ">Ajouter un rendez-vous</a>
         <a href="list_appointment_ctrl.php" class="nav-link">Liste des rendez-vous</a>
+        <a href="create_appointment_patient_ctrl.php" class="nav-link">Ajouter un patient avec Rendez-vous</a>
     </nav>
 <div class="d-flex align-items-center">
 <form action="" method="POST" class="border col-6 rounded form">
