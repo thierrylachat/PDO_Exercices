@@ -22,10 +22,10 @@
         <a href="../index.php" class="nav-link "><img
                 src="https://fotomelia.com/wp-content/uploads/edd/2015/03/logo-hospital-1560x631.png" alt=""></a>
         <a href="create_patients_ctrl.php" class="nav-link">Ajouter un patient</a>
-        <a href="liste_patients_ctrl.php" class="nav-link">Liste Patients</a>
+        <a href="liste_patients_ctrl.php" class="nav-link">Liste des patients</a>
         <a href="create_appointment_ctrl.php" class="nav-link">Ajouter un rendez-vous</a>
         <a href="list_appointment_ctrl.php" class="nav-link">Liste des rendez-vous</a>
-        <a href="create_appointment_patient_ctrl.php" class="nav-link">Ajouter un patient avec Rendez-vous</a>
+        <a href="create_appointment_patient_ctrl.php" class="nav-link">Ajouter un patient avec rendez-vous</a>
     </nav>
 
     <div class="d-flex align-items-center">

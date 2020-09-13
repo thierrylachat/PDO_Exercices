@@ -100,25 +100,42 @@
 			}
             return $patientsView;
         }
+
+
         /**
-         * retour liste des patients enregistré
+         * Retourne la liste des patients enregistrés.
          * @return array
          */
+
 		public function readAll($currentPage,$patientPerPage)
 		{
             $offset = ($currentPage - 1) * $patientPerPage;
+            
+            // Création d'une requête permettant de lire les infos.
             $listPatients_sql = 'SELECT `id`,`lastname`, `firstname`,DATE_FORMAT(`birthdate`,"%d/%m/%Y") AS birthdate_format FROM `patients` ORDER BY `lastname` ASC LIMIT :offset , :limit';
+            
+            // Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
             $patientsStatement = $this->db->prepare($listPatients_sql);
+
+            // Association d'une valeur à un paramètre via bindValue.
+		    // Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
             $patientsStatement->bindValue(':offset', $offset ,PDO::PARAM_INT);
             $patientsStatement->bindValue(':limit', $patientPerPage , PDO::PARAM_INT);
+            
+            // Création du tableau de données liées au jeu de données.
             $listPatients = [];
+            
+            // Vérification que le jeu de données a bien été créé.
             if ($patientsStatement->execute()) {
                 if ($patientsStatement instanceof PDOstatement ) {
                     $listPatients = $patientsStatement->fetchAll(PDO::FETCH_OBJ);
                 }
             }
+
+            // Retourne le résultat de la fonction readAll().
             return $listPatients;
         }
+
         public function countPatients()
         {
             $count_sql = 'SELECT COUNT(`id`) FROM `patients`';

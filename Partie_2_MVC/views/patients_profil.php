@@ -15,7 +15,9 @@
 </head>
 <body>
     <nav class="navbar justify-content-around">
-        <a href="../index.php" class="nav-link  "><img src="https://fotomelia.com/wp-content/uploads/edd/2015/03/logo-hospital-1560x631.png" alt=""></a>
+        <a href="../index.php" class="nav-link">
+            <img src="https://fotomelia.com/wp-content/uploads/edd/2015/03/logo-hospital-1560x631.png" alt="">
+        </a>
         <a href="create_patients_ctrl.php" class="nav-link ">Ajouter un patient</a>
         <a href="liste_patients_ctrl.php" class="nav-link ">Liste Patients</a>
         <a href="create_appointment_ctrl.php" class="nav-link ">Ajouter un rendez-vous</a>
