@@ -148,16 +148,30 @@
             return $countPatients;
         }
 
+        /**
+	    * Retourne la liste des informations des profils des patients.
+	    * @return array
+        */
+
 		public function readSingle()
 		{
-			// :nomDeVariable pour les données en attentes
+			// :nomDeVariable pour les données en attente.
+		    // Création d'une requête permettant de lire les infos d'un patient avec l'ID (unique).
 			$sql_viewPatients = 'SELECT `id`, `lastname`, `firstname`,DATE_FORMAT(`birthdate`,"%d/%m/%Y") AS birthdate_format,`birthdate`,`phone`,`mail` FROM `patients` WHERE `id` = :id ';
+            
+            // Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
             $patientsStatement = $this->db->prepare($sql_viewPatients);
+            
+            // Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
             $patientsStatement->bindValue(':id', $this->id,PDO::PARAM_INT);
-			$patientsView = null;
+            
+            // Si l'id du patient existe, exécution de la méthode pour créer le tableau qui affiche les données du patient.
+            $patientsView = null;
 			if ($patientsStatement->execute()){
 				$patientsView = $patientsStatement->fetch(PDO::FETCH_OBJ);
-			}
+            }
+            
+            // Retourne le résultat de la fonction readSingle().
 			return $patientsView;
 		}
 
