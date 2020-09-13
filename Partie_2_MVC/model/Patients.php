@@ -1,5 +1,10 @@
 <?php
+
+    // Création du chemin absolu permettant la connexion à la database.
     require_once dirname(__FILE__).'/../utils/Databases.php';
+    
+    // Création de la classe patient.
+
     class Patients
     {
         private $id;
@@ -10,8 +15,10 @@
         private $mail;
         private $db;
 
+        // Création d'un constructeur avec des valeurs par défaut pour chaque attribut.
         public function __construct($_id=0,$_lastname='',$_firstname='',$_birthdate='',$_phone='',$_mail='')
         {
+            // Hydratation des différentes propriétés.
             $this->db = Databases::getInstance();
             $this->id = $_id;
             $this->lastname = $_lastname;
@@ -32,6 +39,7 @@
         {
             $this->$attr = $value;
         }
+
         // Création d'une méthode pour insérer une adresse mail valide => Best Practice.
         // public function setMail($mail)
         // {
@@ -41,23 +49,44 @@
         //     }
         // }
 
+        /**
+        * Permet de créer un patient dans la table patients.
+        * @return boolean
+        */
+
         public function create()
 		{
+            // Création de la requête SQL de création de patients.
 			$insertPatients = 'INSERT INTO `patients`(`id`,`lastname`, `firstname`,`birthdate`,`phone`,`mail`) VALUES ( :id, :lastname, :firstname, :birthdate, :phone, :mail )';
+            
+            // Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
             $patientsStatement = $this->db->prepare($insertPatients);
+            
+            // Association d'une valeur à un paramètre via bindValue.
+		    // Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
             $patientsStatement->bindValue(':id', $this->id,PDO::PARAM_INT);
 			$patientsStatement->bindValue(':lastname', $this->lastname,PDO::PARAM_STR);
             $patientsStatement->bindValue(':firstname', $this->firstname,PDO::PARAM_STR);
             $patientsStatement->bindvalue(':birthdate',$this->birthdate,PDO::PARAM_STR);
             $patientsStatement->bindvalue(':phone',$this->phone,PDO::PARAM_STR);
             $patientsStatement->bindvalue(':mail',$this->mail,PDO::PARAM_STR);
+
+            // Initialisation de la variable $id.
             $id = null;
+
+            // Exécution de la méthode avec insertion du dernier id.
+            // lastInsertId() retourne l'identifiant de la dernière ligne insérée ou la valeur d'une séquence.
             if($patientsStatement->execute())
             {
                 $id = $this->db->lastInsertId();
             }
+
+            // Retourne le résultat de la méthode create().
             return $id;
         }
+
+
+
         public function findPatient($text)
         {
             $sql = 'SELECT `id`,`firstname`,`lastname` FROM `patients` WHERE `firstname`LIKE :firstname OR `lastname`LIKE :lastname';

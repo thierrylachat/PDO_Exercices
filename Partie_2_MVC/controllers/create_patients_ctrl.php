@@ -12,7 +12,7 @@
     // Soumission du formulaire.
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        // Appel du fichier verifies qui contient les vérifications du formulaire.
+        // Best Pratice : appel du fichier verifies qui contient les vérifications du formulaire pour éviter de répéter le code.
         require_once dirname(__FILE__) . '/../controllers/verifies.php';
     }
 
