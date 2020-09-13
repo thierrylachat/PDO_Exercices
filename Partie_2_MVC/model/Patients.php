@@ -175,10 +175,20 @@
 			return $patientsView;
 		}
 
+        /**
+	    * Retourne la liste des informations des profils des patients.
+	    * @return boolean
+        */
+
 		public function update()
 		{
+            // Création d'une requête SQL de mise à jour du profil du patient avec l'ID (unique).
             $sql = 'UPDATE `patients` SET `lastname`=:lastname,`firstname`=:firstname,`birthdate`=:birthdate,`phone`=:phone,`mail`=:mail WHERE `id`=:id';
+            
+            // Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
             $patientsStatement = $this->db->prepare($sql);
+
+            // Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
             $patientsStatement->bindValue(':id', $this->id,PDO::PARAM_INT);
 			$patientsStatement->bindValue(':lastname', $this->lastname,PDO::PARAM_STR);
             $patientsStatement->bindValue(':firstname', $this->firstname,PDO::PARAM_STR);
@@ -186,8 +196,11 @@
             $patientsStatement->bindvalue(':phone',$this->phone,PDO::PARAM_STR);
             $patientsStatement->bindvalue(':mail',$this->mail,PDO::PARAM_STR);
 
+            // Retourne le résultat de la fonction update().
             return $patientsStatement->execute();
 		}
+
+
 
 		public function delete()
 		{
