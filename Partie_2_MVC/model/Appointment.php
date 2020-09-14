@@ -62,19 +62,31 @@
         
 
         /**
-         * retour liste des patients enregistré
+         * retour la liste des rendez-vous.
          * @return array
          */
+
 		public function readAll()
 		{
+            // Création d'une requête permettant de lire les infos.
             $listPatients_sql = "SELECT `appointments`.`id` AS identifiant_app,date_format(`dateHour`,'%d/%m/%Y %H:%i') AS dateHour_fr,`idPatients`,`firstname`,`lastname` FROM `appointments` JOIN `patients` ON `patients`.`id` = `appointments`.`idPatients` ORDER BY `dateHour` ASC";
+            
+            // "Query" renvoie le jeu de données associées à la requête.
             $listAppointment_stmt = $this->db->query($listPatients_sql);
+            
+             // Création du tableau de données liées au jeu de données.
             $listAppointment = [];
+            
+            // Vérification que le jeu de données a bien été créé et affichage du tableau d'objets avec FetchAll.
             if ($listAppointment_stmt instanceof PDOstatement ) {
                 $listAppointment = $listAppointment_stmt->fetchAll(PDO::FETCH_OBJ);
             }
+
+            // Retourne le résultat de la méthode readAll().
             return $listAppointment;
-		}
+        }
+        
+        
 
 		public function readSingle()
 		{

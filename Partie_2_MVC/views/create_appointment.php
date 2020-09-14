@@ -36,7 +36,7 @@
                 <p>Le rendez-vous a été ajouté avec succès ! :)</p>
                 <?php endif; ?>
             </div>
-            
+
             <div class="col-md-10 m-auto">
                 <legend>Prise de rendez-vous</legend>
                 <div style="position:relative;">
@@ -62,11 +62,11 @@
     <script src="../assets/js/moment.js"></script>
 
     <script>
-        // on utilise la librairie moment 
+        // Utilisation de la librairie moment.
         $.datetimepicker.setDateFormatter('moment');
-        // on format le datepiker en francais 
+        // Formatage du datepiker en francais.
         jQuery.datetimepicker.setLocale('fr');
-        // on formate le masque pour le format de date 
+        // Formatage du masque pour le format de date.
         jQuery('#datetimepicker').datetimepicker({
             mask: true,
             minDate: moment().format(),
