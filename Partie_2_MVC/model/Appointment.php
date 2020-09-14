@@ -86,18 +86,33 @@
             return $listAppointment;
         }
         
-        
+
+        /**
+        * Retourne le détail d'un rdv.
+        * @return boolean
+        */
 
 		public function readSingle()
 		{
-			// :nomDeVariable pour les données en attentes
+			// Création d'une requête permettant de lire les infos d'un rdv.
             $listAppointment_sql = "SELECT `appointments`.`id` AS identifiant_app,date_format(`dateHour`,'%d/%m/%Y %H:%i') AS dateHour_fr,`idPatients`,`firstname`,`lastname` FROM `appointments` JOIN `patients` ON `patients`.`id` = `appointments`.`id` WHERE `appointments`.`id`=:id";
+            
+            // Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
             $appointmentStatement = $this->db->prepare($listAppointment_sql);
+            
+            // Association d'une valeur à un paramètre via bindValue.
+            // Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
             $appointmentStatement->bindValue(':id', $this->id,PDO::PARAM_INT);
-			$appointmentView = null;
+            
+            // Initialisation de la variable appointmentvView.
+            $appointmentView = null;
+
+            // Vérification que le jeu de données a bien été créé et affichage des données avec fetch car un seul rdv scanné.
 			if ($appointmentStatement->execute()){
 				$appointmentView = $appointmentStatement->fetch(PDO::FETCH_OBJ);
-			}
+            }
+            
+            // Retourne le résultat de la méthode readSingle().
 			return $appointmentView;
         }
         
