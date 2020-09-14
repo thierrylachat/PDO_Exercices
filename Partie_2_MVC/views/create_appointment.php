@@ -22,25 +22,30 @@
         <a href="../index.php" class="nav-link  "><img
                 src="https://fotomelia.com/wp-content/uploads/edd/2015/03/logo-hospital-1560x631.png" alt=""></a>
         <a href="create_patients_ctrl.php" class="nav-link ">Ajouter un patient</a>
-        <a href="liste_patients_ctrl.php" class="nav-link ">Liste Patients</a>
+        <a href="liste_patients_ctrl.php" class="nav-link ">Liste des patients</a>
         <a href="create_appointment_ctrl.php" class="nav-link ">Prise de rendez-vous</a>
         <a href="list_appointment_ctrl.php" class="nav-link">Liste des rendez-vous</a>
-        <a href="create_appointment_patient_ctrl.php" class="nav-link">Ajouter un patient avec Rendez-vous</a>
+        <a href="create_appointment_patient_ctrl.php" class="nav-link">Ajouter un patient avec rendez-vous</a>
     </nav>
     <div class="d-flex align-items-center">
         <form action="" method="POST" class="border col-6 rounded form">
+
+            <!-- Affichage d'un message de succés de création de patient. -->
             <div class="col-12" role="alert">
                 <?php if (isset($createAppointmentSuccess)): ?>
                 <p>Le rendez-vous a été ajouté avec succès ! :)</p>
                 <?php endif; ?>
             </div>
+            
             <div class="col-md-10 m-auto">
                 <legend>Prise de rendez-vous</legend>
                 <div style="position:relative;">
                     <label for="patient">Patient :</label>
                     <input class="form-control" type="search" id="patient" placeholder="Nom du patient">
+
                     <!-- ========= INPUT HIDDEN ===================== -->
                     <input type="hidden" name="idPatient" id="idPatient">
+
                     <div id="result" style="position:absolute;left:0;right:0;"></div>
                 </div>
                 <div>
@@ -51,9 +56,11 @@
             </div>
         </form>
     </div>
+
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/jquery-datetimepicker/jquery.datetimepicker.js"></script>
     <script src="../assets/js/moment.js"></script>
+
     <script>
         // on utilise la librairie moment 
         $.datetimepicker.setDateFormatter('moment');
@@ -66,6 +73,8 @@
             format: 'DD/MM/YYYY HH:mm'
         });
     </script>
+
+    <!-- A REVOIR -->
     <script>
         let sp = document.getElementById('patient');
         let list = document.getElementById('result');
@@ -76,7 +85,7 @@
                 //on vide le champ 
                 list.innerHTML = '';
                 let data = new FormData();
-                data.append('search',search);
+                data.append('search', search);
                 //on recherche a partir de deux caractere  et on renvoie la 
                 //page controllers/create_appointment_ctrl.php ============
                 var req = fetch('../controllers/create_appointment_ctrl.php', {
@@ -84,29 +93,29 @@
                         'Accept': 'application/json',
                         // 'Content-Type': 'application/json'
                     },
-                    method:'POST',
+                    method: 'POST',
                     body: data
                 });
                 // si le traitement s'est bien passé 
                 req.then(function (response) {
-                    return response.json();
-                })
-                //traitement du php qui est retourner 
-                .then(function (data) {
-                    //ceci est une fonction flecher => === function()
-                    let ul = '<ul class="list-group">';
-                    data.forEach(patient => 
-                    {
-                        //ul+li vous avez compris  = <ul>
-                                                        //<li>liste 1</li>
-                                                //  </ul>
-                        ul += `<li class="list-group-item text-dark choice" data-id="${patient.id}" >${patient.firstname} ${patient.lastname}</li>`;
+                        return response.json();
                     })
-                    list.innerHTML = ul;
-                })
+                    //traitement du php qui est retourner 
+                    .then(function (data) {
+                        //ceci est une fonction flecher => === function()
+                        let ul = '<ul class="list-group">';
+                        data.forEach(patient => {
+                            //ul+li vous avez compris  = <ul>
+                            //<li>liste 1</li>
+                            //  </ul>
+                            ul +=
+                                `<li class="list-group-item text-dark choice" data-id="${patient.id}" >${patient.firstname} ${patient.lastname}</li>`;
+                        })
+                        list.innerHTML = ul;
+                    })
             }
         })
-        document.body.addEventListener('click',function(e){
+        document.body.addEventListener('click', function (e) {
             let target = e.target;
             if (target.classList.contains('choice')) {
                 // alert(target.textContent);
@@ -117,6 +126,7 @@
             }
         })
     </script>
+
 </body>
 
 </html>

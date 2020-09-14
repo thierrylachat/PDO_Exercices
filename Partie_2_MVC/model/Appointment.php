@@ -1,14 +1,22 @@
 <?php
+
+    // Création du chemin absolu permettant la connexion à la database.
     require_once dirname(__FILE__).'/../utils/Databases.php';
+
+    // Création de la classe Appointment.
+
     class Appointment
     {
+        // Définition des attributs.
         private $id;
         private $dateHour;
         private $idPatients;
         private $db;
 
-        public function __construct($_id=0,$_dateHour='',$_idPatients=0)
+        // Création d'un constructeur avec des valeurs par défaut pour chaque attribut.
+        public function __construct($_id = 0, $_dateHour = '', $_idPatients = 0)
         {
+            // Hydratation des différentes propriétés.
             $this->db = Databases::getInstance();
             $this->id = $_id;
             $this->dateHour = $_dateHour;
@@ -26,26 +34,33 @@
         {
             $this->$attr = $value;
         }
-        // Création d'une méthode pour insérer une adresse mail valide => Best Practice.
-        // public function setMail($mail)
-        // {
-        //     if(filter_var($mail, FILTER_VALIDATE_EMAIL))
-        //     {
-        //         $this->mail = $mail;            
-        //     }
-        // }
+
+
+        /**
+        * Permet de créer un rdv dans la table appointment.
+        * @return boolean
+        */
 
         public function create()
 		{
+            // Création de la requête SQL de création de patients.
 			$insertPatients = 'INSERT INTO `appointments`(`id`,`dateHour`, `idPatients`) VALUES ( :id, :dateHour, :idPatients )';
+            
+            // Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
             $patientsStatement = $this->db->prepare($insertPatients);
+            
+            // Association d'une valeur à un paramètre via bindValue.
+		    // Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
             $patientsStatement->bindValue(':id', $this->id,PDO::PARAM_INT);
 			$patientsStatement->bindValue(':dateHour', $this->dateHour,PDO::PARAM_STR);
             $patientsStatement->bindValue(':idPatients', $this->idPatients,PDO::PARAM_INT);
             // return var_dump($patientsStatement);
+
+            // // Retourne le résultat de la méthode create().
             return $patientsStatement->execute();
-            
-		}
+        }
+        
+
         /**
          * retour liste des patients enregistré
          * @return array

@@ -7,6 +7,7 @@
 
     class Patients
     {
+        // Définition des attributs.
         private $id;
         private $lastname;
         private $firstname;

@@ -22,7 +22,7 @@ if ($isSubmitted && count($errors)== 0) {
     // Instanciation d'un nouvel objet.
     $patients = new Patients (0, $_POST['firstname'],$_POST['lastname'],$_POST['birthdate'],$_POST['phone'],$_POST['mail']);
     
-    // Appel de la fonction create() du model qui va permettre de créer un nouveau patient.
+    // Si la fonction create() du model s'est bien exécutée. 
     if($patients->create())
     {
         // Affichage du message de succès de création de nouveau patient. 
