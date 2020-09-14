@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
@@ -15,17 +16,19 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Modifier le rendez-vous </title>
 </head>
+
 <body>
-<nav class="navbar justify-content-around">
-        <a href="../index.php" class="nav-link  "><img src="https://fotomelia.com/wp-content/uploads/edd/2015/03/logo-hospital-1560x631.png" alt=""></a>
+    <nav class="navbar justify-content-around">
+        <a href="../index.php" class="nav-link  "><img
+                src="https://fotomelia.com/wp-content/uploads/edd/2015/03/logo-hospital-1560x631.png" alt=""></a>
         <a href="create_patients_ctrl.php" class="nav-link ">Ajouter un patient</a>
-        <a href="liste_patients_ctrl.php" class="nav-link ">Liste Patients</a>
+        <a href="liste_patients_ctrl.php" class="nav-link ">Liste des patients</a>
         <a href="create_appointment_ctrl.php" class="nav-link ">Ajouter un rendez-vous</a>
         <a href="list_appointment_ctrl.php" class="nav-link">Liste des rendez-vous</a>
-        <a href="create_appointment_patient_ctrl.php" class="nav-link">Ajouter un patient avec Rendez-vous</a>
+        <a href="create_appointment_patient_ctrl.php" class="nav-link">Ajouter un patient avec rendez-vous</a>
     </nav>
-<div class="d-flex align-items-center">
-<form action="" method="POST" class="border col-6 rounded form">
+    <div class="d-flex align-items-center">
+        <form action="" method="POST" class="border col-6 rounded form">
             <div class="col-12" role="alert">
                 <?php if (isset($modifyAppointmentSuccess)): ?>
                 <p>Le rendez-vous a été modifié avec succès ! :)</p>
@@ -35,24 +38,32 @@
                 <legend>Modifier le rendez-vous</legend>
                 <div style="position:relative;">
                     <label for="patient">Patient :</label>
-                    <input class="form-control" type="search" id="patient" placeholder="Nom du patient" value="<?= $firstname.' '.$lastname; ?>">
+                    <input class="form-control" type="search" id="patient" placeholder="Nom du patient"
+                        value="<?= $firstname.' '.$lastname; ?>">
+
                     <!-- ========= INPUT HIDDEN ===================== -->
                     <input type="hidden" name="idPatient" id="idPatient" value="<?= $idPatients; ?>">
+
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div id="result" style="position:absolute;left:0;right:0;"></div>
                 </div>
                 <div>
                     <label for="datetimepicker">Date du rendez-vous :</label>
-                    <input id="datetimepicker" name="dateHour" type="text" class="form-control" value="<?= $dateHour; ?>">
+                    <input id="datetimepicker" name="dateHour" type="text" class="form-control"
+                        value="<?= $dateHour; ?>">
                 </div>
                 <input class="btn btn-secondary mt-2 mb-3" type="submit" value="Prise de rendez-vous">
             </div>
         </form>
-</div>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-<script src="../node_modules/jquery/dist/jquery.js"></script>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+    </script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/jquery-datetimepicker/jquery.datetimepicker.js"></script>
     <script src="../assets/js/moment.js"></script>
+
     <script>
         // on utilise la librairie moment 
         $.datetimepicker.setDateFormatter('moment');
@@ -65,6 +76,7 @@
             format: 'DD/MM/YYYY HH:mm'
         });
     </script>
+
     <script>
         let sp = document.getElementById('patient');
         let list = document.getElementById('result');
@@ -75,7 +87,7 @@
                 //on vide le champ 
                 list.innerHTML = '';
                 let data = new FormData();
-                data.append('search',search);
+                data.append('search', search);
                 //on recherche a partir de deux caractere  et on renvoie la 
                 //page controllers/create_appointment_ctrl.php ============
                 var req = fetch('../controllers/create_appointment_ctrl.php', {
@@ -83,29 +95,29 @@
                         'Accept': 'application/json',
                         // 'Content-Type': 'application/json'
                     },
-                    method:'POST',
+                    method: 'POST',
                     body: data
                 });
                 // si le traitement s'est bien passé 
                 req.then(function (response) {
-                    return response.json();
-                })
-                //traitement du php qui est retourner 
-                .then(function (data) {
-                    //ceci est une fonction flecher => === function()
-                    let ul = '<ul class="list-group">';
-                    data.forEach(patient => 
-                    {
-                        //ul+li vous avez compris  = <ul>
-                                                        //<li>liste 1</li>
-                                                //  </ul>
-                        ul += `<li class="list-group-item text-dark choice" data-id="${patient.id}" >${patient.firstname} ${patient.lastname}</li>`;
+                        return response.json();
                     })
-                    list.innerHTML = ul;
-                })
+                    //traitement du php qui est retourner 
+                    .then(function (data) {
+                        //ceci est une fonction flecher => === function()
+                        let ul = '<ul class="list-group">';
+                        data.forEach(patient => {
+                            //ul+li vous avez compris  = <ul>
+                            //<li>liste 1</li>
+                            //  </ul>
+                            ul +=
+                                `<li class="list-group-item text-dark choice" data-id="${patient.id}" >${patient.firstname} ${patient.lastname}</li>`;
+                        })
+                        list.innerHTML = ul;
+                    })
             }
         })
-        document.body.addEventListener('click',function(e){
+        document.body.addEventListener('click', function (e) {
             let target = e.target;
             if (target.classList.contains('choice')) {
                 // alert(target.textContent);
@@ -117,4 +129,5 @@
         })
     </script>
 </body>
+
 </html>

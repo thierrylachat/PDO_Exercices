@@ -104,7 +104,7 @@
             // Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
             $appointmentStatement->bindValue(':id', $this->id,PDO::PARAM_INT);
             
-            // Initialisation de la variable appointmentvView.
+            // Initialisation de la variable appointmentView.
             $appointmentView = null;
 
             // Vérification que le jeu de données a bien été créé et affichage des données avec fetch car un seul rdv scanné.
@@ -116,16 +116,29 @@
 			return $appointmentView;
         }
         
+        
+        /**
+	    * Retourne la liste des informations d'un rdv sélectionné.
+	    * @return boolean
+        */
 
 		public function update()
 		{
+            // Création d'une requête SQL de mise à jour du profil du patient avec l'ID (unique).
             $sql = 'UPDATE `appointments` SET `dateHour`=:dateHour,`idPatients`=:idPatients WHERE `id`=:id';
+            
+            // Création d'une requête préparée avec prepare() pour se protéger des injections SQL.
             $appointmentStatement = $this->db->prepare($sql);
+            
+            // Les éléments de la requête SQL provenant de l’utilisateur sont remplacés par des marqueurs nominatifs auxquels on attribue une valeur grâce à la méthode bindValue().
             $appointmentStatement->bindValue(':id', $this->id,PDO::PARAM_INT);
 			$appointmentStatement->bindValue(':dateHour', $this->dateHour,PDO::PARAM_STR);
             $appointmentStatement->bindValue(':idPatients', $this->idPatients,PDO::PARAM_INT);
+            
+            // Retourne le résultat de la fonction update().
             return $appointmentStatement->execute();
         }
+
         
         public function readPatientAppointments($idPatients)
         {
